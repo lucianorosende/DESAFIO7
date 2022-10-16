@@ -5,6 +5,8 @@ import CartRouter from "./router/cart.router.js";
 import http from "http";
 import { Server as Socket } from "socket.io";
 import Connect from "./api/websocket.js";
+import { MARIADBTable } from "./tables/mariaDB.js";
+import { SQLITETable } from "./tables/sqlite3.js";
 
 const app = Express();
 const server = http.Server(app);
@@ -38,3 +40,7 @@ srv.on("error", (err) => console.log("server error: " + err));
 
 export const io = new Socket(server);
 Connect();
+
+// TABLES -------------------------------------------------------------------------
+MARIADBTable();
+SQLITETable();
