@@ -1,15 +1,10 @@
 import Express from "express";
 import Contenedor from "../api/products.js";
-import fs from "fs";
-import knex from "knex";
-import { options } from "../options/optionsMARIA.js";
 
 //Router --------------------------------------------------------------------------------
 
 const Container = new Contenedor();
 const apiRouter = Express.Router();
-const knexstart = knex(options);
-export const route = "./productos.txt";
 
 const isAdmin = (req, res, next) => {
     if (req.query.admin === "true") {
@@ -48,33 +43,26 @@ apiRouter.post("/", isAdmin, async (req, res) => {
 
 // update product based off id
 apiRouter.put("/:id", isAdmin, async (req, res) => {
-    const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
-    let producto = await Container.update(req.params.id, {
-        nombre,
-        descripcion,
-        codigo,
-        foto,
-        precio,
-        stock,
-    });
-    producto !== null
-        ? res.json(producto)
-        : res.json({ error: "producto no encontrado" });
+    let update = await Container.update(req.params.id, req.body);
+
+    update === 0
+        ? res.send("no hay producto para actualizar")
+        : res.send(`producto actualizado con id: ${req.params.id}`);
 });
 
 // delete product based off id
 apiRouter.delete("/:id", isAdmin, async (req, res) => {
     const result = await Container.delete(req.params.id);
 
-    if (result === null) {
-        res.send(`no hay producto con id: ${req.params.id}`);
-    } else {
-        res.send(result);
-    }
+    result === null
+        ? res.send(`no hay producto con id: ${req.params.id}`)
+        : res.send(result);
 });
 apiRouter.delete("/", isAdmin, async (req, res) => {
     const result = await Container.deleteAll();
-    res.send("TODOS LOS PRODUCTOS BORRADOS");
+    result === 0
+        ? res.send("no hay productos para borrar")
+        : res.send("TODOS LOS PRODUCTOS BORRADOS");
 });
 
 export default apiRouter;

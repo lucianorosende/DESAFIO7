@@ -1,20 +1,15 @@
-import fs from "fs";
-import { route } from "../router/products.router.js";
 import knex from "knex";
 import { options } from "../options/optionsMARIA.js";
 
 const knexstart = knex(options);
 
 class Contenedor {
-    static products = [];
-
     async getWithKnex() {
         return await knexstart("products").select("*");
     }
-    async getById(num) {
-        let data = await knexstart("products").select("*");
-        let findProduct = data.find((product) => product.id == num);
-        if (findProduct === undefined) return null;
+    async getById(id) {
+        let findProduct = await knexstart("products").where("id", id);
+        if (findProduct.length === 0) return null;
         return findProduct;
     }
     async saveProduct(product) {
@@ -34,19 +29,8 @@ class Contenedor {
         return product.id;
     }
     async update(id, obj) {
-        let newData = await this.getWithFs();
-        newData = JSON.parse(JSON.stringify(newData));
-        let index = newData.findIndex((product) => product.id == id);
-        if (index >= 0) {
-            newData.splice(index, 1, { ...obj, id: parseInt(id) });
-            await fs.promises.writeFile(
-                route,
-                JSON.stringify(newData, null, 2)
-            );
-            return newData[index];
-        } else {
-            return null;
-        }
+        let find = await knexstart("products").where("id", id).update(obj);
+        return find;
     }
     async delete(id) {
         let data = await this.getWithKnex();
