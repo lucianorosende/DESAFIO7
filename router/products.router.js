@@ -1,11 +1,14 @@
 import Express from "express";
 import Contenedor from "../api/products.js";
 import fs from "fs";
+import knex from "knex";
+import { options } from "../options/optionsMARIA.js";
 
 //Router --------------------------------------------------------------------------------
 
 const Container = new Contenedor();
 const apiRouter = Express.Router();
+const knexstart = knex(options);
 export const route = "./productos.txt";
 
 const isAdmin = (req, res, next) => {
@@ -18,9 +21,9 @@ const isAdmin = (req, res, next) => {
 
 // get Products
 apiRouter.get("/", async (req, res) => {
-    let PRODUCTS = await Container.getWithFs();
+    let PRODUCTS = await Container.getWithKnex();
 
-    PRODUCTS === undefined
+    PRODUCTS.length === 0
         ? res.json({ error: "No products found" })
         : res.json({ PRODUCTS: PRODUCTS });
 });
@@ -31,27 +34,16 @@ apiRouter.get("/:id", async (req, res) => {
     let product = await Container.getById(id);
     product === null
         ? res.json({ error: "Product not found" })
-        : res.json(product);
+        : res.json({ PRODUCT: product });
 });
 
 // add products and add id
 apiRouter.post("/", isAdmin, async (req, res) => {
-    let PRODUCTS = await Container.getWithFs();
-    const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
-    if (!nombre || !descripcion || !codigo || !foto || !precio || !stock) {
-        return res.send("completar todo el formulario");
-    }
-    if (req.body.id === undefined) {
-        req.body.id = 1;
-        if (PRODUCTS.length > 0) {
-            req.body.id = PRODUCTS[PRODUCTS.length - 1].id + 1;
-        }
-    }
-    req.body.timestamp = new Date().toLocaleTimeString();
-    PRODUCTS.push(req.body);
-    let stringify = JSON.stringify(PRODUCTS, null, 2);
-    await fs.promises.writeFile(route, stringify);
-    res.send("producto con id: " + req.body.id);
+    let saveProduct = await Container.saveProduct(req.body);
+
+    saveProduct === null
+        ? res.send("completar todo el formulario")
+        : res.send(`producto con id: ${saveProduct}`);
 });
 
 // update product based off id
@@ -79,6 +71,10 @@ apiRouter.delete("/:id", isAdmin, async (req, res) => {
     } else {
         res.send(result);
     }
+});
+apiRouter.delete("/", isAdmin, async (req, res) => {
+    const result = await Container.deleteAll();
+    res.send("TODOS LOS PRODUCTOS BORRADOS");
 });
 
 export default apiRouter;

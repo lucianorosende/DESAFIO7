@@ -6,7 +6,7 @@ import http from "http";
 import { Server as Socket } from "socket.io";
 import Connect from "./api/websocket.js";
 import { MARIADBTable } from "./tables/mariaDB.js";
-import { SQLITETable } from "./tables/sqlite3.js";
+import { SQLITETable, dropSQLITETable } from "./tables/sqlite3.js";
 
 const app = Express();
 const server = http.Server(app);
@@ -44,3 +44,4 @@ Connect();
 // TABLES -------------------------------------------------------------------------
 MARIADBTable();
 SQLITETable();
+// dropSQLITETable();

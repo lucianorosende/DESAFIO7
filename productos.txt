@@ -1,0 +1,131 @@
+[
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:27:27"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 2,
+    "timestamp": "11:35:48"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 3,
+    "timestamp": "11:36:25"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 4,
+    "timestamp": "11:40:04"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "id": 5,
+    "timestamp": "11:40:17"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:45:25"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:46:37"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:47:32"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:47:46"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 1,
+    "timestamp": "11:48:35"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 2,
+    "timestamp": "11:48:37"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 3,
+    "timestamp": "11:48:39"
+  },
+  {
+    "nombre": "22222222",
+    "descripcion": "Auto para 4 pasajeros",
+    "codigo": "25990",
+    "foto": "chrome://branding/content/about-logo.png",
+    "precio": 200,
+    "stock": 20,
+    "id": 4,
+    "timestamp": "11:48:56"
+  }
+]

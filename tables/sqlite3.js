@@ -3,12 +3,14 @@ import knex from "knex";
 const knexstart = knex(options);
 
 export const SQLITETable = async () => {
-    let isTable = await knexstart.schema.hasTable("test");
+    let isTable = await knexstart.schema.hasTable("messages");
     if (!isTable) {
         knexstart.schema
-            .createTable("test", (table) => {
-                table.increments("id");
-                table.integer("precio");
+            .createTable("messages", (table) => {
+                table.string("author");
+                table.string("text");
+                table.string("day");
+                table.string("hour");
             })
             .then(() => {
                 console.log("created table");
@@ -22,8 +24,8 @@ export const SQLITETable = async () => {
     } else {
         console.log("SQLITE table exists");
     }
+};
 
-    await knexstart("test").insert({ precio: 25 });
-    let data = await knexstart("test").select("*");
-    console.log(data);
+export const dropSQLITETable = async () => {
+    await knexstart.schema.dropTable("messages");
 };
