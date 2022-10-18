@@ -14,64 +14,76 @@
 <body>
 
     <div class="container mt-3">
-        <!-- <div class="jumbotron">
+        <div class="jumbotron">
             <h1>Ingrese Producto</h1>
             <br>
 
             <form id="tableForm" autocomplete="off">
-                
+
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input id="nombre" class="form-control" type="text" name="title" required>
                 </div>
-
-                
                 <div class="form-group">
-                    <label for="precio">Precio</label>
-                    <input id="precio" class="form-control" type="number" step="0.01" name="price" required>
+                    <label for="nombre">Descripcion</label>
+                    <input id="Descripcion" class="form-control" type="text" name="title" required>
                 </div>
-
-                
+                <div class="form-group">
+                    <label for="nombre">Precio</label>
+                    <input id="precio" class="form-control" type="number" name="title" required>
+                </div>
                 <div class="form-group">
                     <label for="foto">Foto URL</label>
                     <input id="foto" class="form-control" type="url" name="thumbnail">
                 </div>
+                <div class="form-group">
+                    <label for="precio">Codigo</label>
+                    <input id="codigo" class="form-control" type="text" step="0.01" name="price" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Stock</label>
+                    <input id="stock" class="form-control" type="number" step="0.01" name="price" required>
+                </div>
 
-                
-                <input type="submit" value="Enviar" class="btn btn-success mt-3 mb-3"></input>
+
+
+                <input type="submit" value="Enviar" class="btn btn-success mt-3 mb-3"></input><input type="button"
+                    value="Eliminar" class="btn btn-danger m-2 mt-3 mb-3" onclick="return deleteProducts()"></input>
             </form>
             <div id="datos"></div>
         </div>
-        <div class="container mt-3"> -->
-        <div class="jumbotron">
-            <h1>Centro de mensajes</h1>
-            <br>
+        <div class="container mt-3">
+            <div class="jumbotron">
+                <h1>Centro de mensajes</h1>
+                <br>
 
-            <form id="msgForm" autocomplete="off" onsubmit="return addMessage()">
-                <!-- Campo nombre del producto -->
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" class="form-control" type="email" name="email" required
-                        placeholder="lucianorosende@gmail.com">
-                </div>
-                <hr>
-                <div id="msgContainer" class="mb-2 mt-2"></div>
+                <form id="msgForm" autocomplete="off" onsubmit="return addMessage()">
+                    <!-- Campo nombre del producto -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" class="form-control" type="email" name="email" required
+                            placeholder="lucianorosende@gmail.com">
+                    </div>
+                    <hr>
+                    <div id="msgContainer" class="mb-2 mt-2"></div>
 
-                <!-- Campo url de la foto del producto -->
-                <div class="form-group">
-                    <label for="msg">Tu mensaje...</label>
-                    <input id="msg" class="form-control" type="text" name="msg" placeholder="Contanos lo que quieras!">
-                </div>
+                    <!-- Campo url de la foto del producto -->
+                    <div class="form-group">
+                        <label for="msg">Tu mensaje...</label>
+                        <input id="msg" class="form-control" type="text" name="msg"
+                            placeholder="Contanos lo que quieras!">
+                    </div>
 
-                <!-- Botón de envío -->
-                <input type="submit" value="Enviar" class="btn btn-success mt-3 mb-3"></input>
+                    <!-- Botón de envío -->
+                    <input type="submit" value="Enviar" class="btn btn-success mt-3 mb-3"></input><input type="button"
+                        value="Eliminar" class="btn btn-danger m-2 mt-3 mb-3" onclick="return deleteMessages()"></input>
 
-            </form>
+                </form>
 
+            </div>
         </div>
-    </div>
-    <script src="js/main.js"></script>
-    <script src="js/hb.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/hb.js"></script>
 </body>
 
 </html>
