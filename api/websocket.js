@@ -12,8 +12,8 @@ const Connect = () => {
         let dataDB = await knexstart("messages").select("*");
         console.log("new connection");
         socket.emit("messages", dataDB);
-
         socket.emit("products", await Container.getWithKnex());
+
         socket.on("update", async (data) => {
             await Container.saveProduct(data);
             io.sockets.emit("products", await Container.getWithKnex());
